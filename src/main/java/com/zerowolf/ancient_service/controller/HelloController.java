@@ -1,6 +1,7 @@
 package com.zerowolf.ancient_service.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.zerowolf.ancient_service.bean.ListBean;
 import com.zerowolf.ancient_service.utils.PathUtil;
 
@@ -29,25 +30,36 @@ public class HelloController {
     }
 
     @RequestMapping("/addNew")
-    private void addNew() {
+    private String addNew(ListBean listBean) {
 //        return "Hello World!";
-        ListBean listBean = new ListBean();
-        listBean.setContent("内容");
-        listBean.setLoveCount(198);
-        listBean.setImageUrl("icon_user_01");
-        listBean.setPublishTime("2019-08-24");
-        listBean.setUsername("独行者bbb");
+//        ListBean listBean = new ListBean();
+//        listBean.setContent("内容");
+//        listBean.setLoveCount(198);
+//        listBean.setImageUrl("icon_user_01");
+//        listBean.setPublishTime("2019-08-24");
+//        listBean.setUsername("独行者bbb");
 
         PathUtil.updateJson(listBean);
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("status", 200);
+        jsonObject.put("msg", "成功");
+
+        return jsonObject.toJSONString();
     }
 
     @RequestMapping("/getJson")
     private String getJson() {
-        return PathUtil.getJsonData().toJSONString();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("status", 200);
+        jsonObject.put("msg", "成功");
+        jsonObject.put("data", PathUtil.getJsonData().toJSONString());
+
+        return jsonObject.toJSONString();
     }
 
     @RequestMapping("/reset")
-    private void resetJson() {
+    private String resetJson() {
         StringBuilder stringBuilder = new StringBuilder();
         try {
 //            jsonStr = new String(IOUtils.readFully(areaRes.getInputStream(), -1,true));
@@ -61,7 +73,11 @@ public class HelloController {
         }
 
         PathUtil.resetJson(stringBuilder.toString());
-
 //        return ;
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("status", 200);
+        jsonObject.put("msg", "成功");
+
+        return jsonObject.toJSONString();
     }
 }

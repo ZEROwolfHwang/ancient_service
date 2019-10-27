@@ -49,31 +49,12 @@ public class PathUtil {
     }
 
     public static void updateJson(ListBean diaryBean) {
-
-//        ListBean listBean = new ListBean();
-//        listBean.setContent("内容");
-//        listBean.setLoveCount(198);
-//        listBean.setImageUrl("icon_user_01");
-//        listBean.setPublishTime("2019-08-24");
-//        listBean.setUsername("独行者");
-
         JSONObject jsonObject = getJsonData();
-//        String jsonStr = (String) jsonData;
-//        System.out.println(jsonStr);
-//        JSONObject jsonObject = JSONObject.parseObject(jsonStr);
-
         JSONArray newList = jsonObject.getJSONArray("new_list");
 
         newList.add(diaryBean);
-//        System.out.println(newList.toJSONString());
-//
-//        System.out.println(jsonObject.toJSONString());
-
         reWriteJson(JSONObject.toJSONString(jsonObject));
     }
-
-//    @Value("classpath:static/json/userInfo.json")
-//    private Resource userInfo;
 
     public static void resetJson(String resetString) {
         reWriteJson(resetString);
