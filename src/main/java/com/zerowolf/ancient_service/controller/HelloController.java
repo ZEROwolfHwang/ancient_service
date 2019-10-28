@@ -20,6 +20,8 @@ import java.io.InputStreamReader;
 @Controller
 @EnableAutoConfiguration
 @ResponseBody
+
+@RequestMapping("/ancient")
 public class HelloController {
     @Value("classpath:static/json/userInfo.json")
     private Resource areaRes;
@@ -29,7 +31,7 @@ public class HelloController {
         return "Hello World!";
     }
 
-    @RequestMapping("/addNew")
+    @RequestMapping(value = "/addNew")
     private String addNew(ListBean listBean) {
 //        return "Hello World!";
 //        ListBean listBean = new ListBean();
@@ -44,6 +46,7 @@ public class HelloController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("status", 200);
         jsonObject.put("msg", "成功");
+        jsonObject.put("data", "");
 
         return jsonObject.toJSONString();
     }
@@ -77,6 +80,7 @@ public class HelloController {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("status", 200);
         jsonObject.put("msg", "成功");
+        jsonObject.put("data", "");
 
         return jsonObject.toJSONString();
     }

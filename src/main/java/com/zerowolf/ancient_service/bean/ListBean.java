@@ -12,6 +12,8 @@ public class ListBean {
     private String publishTime;
     private String imageUrl;
     private String content;
+    private String title;
+    private String uuid;
     private int loveCount;
 
     public String getUsername() {
@@ -38,6 +40,14 @@ public class ListBean {
         this.imageUrl = imageUrl;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getContent() {
         return content;
     }
@@ -52,5 +62,13 @@ public class ListBean {
 
     public void setLoveCount(int loveCount) {
         this.loveCount = loveCount;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 }
